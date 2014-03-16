@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AzureTypedStorage</id>
+    <version>1.0.0</version>
+    <authors>Mandro44</authors>
+    <owners>Mandro44</owners>
+    <licenseUrl>https://raw.githubusercontent.com/mandrek44/azure-typed-storage/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/mandrek44/azure-typed-storage</projectUrl>    
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A wrapper for Azure's CloudTable class that provides interfaces and strongly typed API</description>    
+    <copyright>Copyright 2014</copyright>
+    <tags>Azure</tags>
+    <dependencies>
+      <dependency id="WindowsAzure.Storage" version="2.1.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -2,13 +2,14 @@ namespace AzureTypedStorage
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Table;
 
-    public class CloudTableImpl<TElement> : IQuerableCloudTable<TElement>, IExecutableCloudTable, IExecutableCloudTable<TElement>
+    public class CloudTableImpl<TElement> : IQuerableCloudTable<TElement>, IExecutableCloudTable, IExecutableCloudTable<TElement>, IEditableCloudTable<TElement>, ICloudTable<TElement>
         where TElement : ITableEntity, new()
     {
         private readonly CloudTable _instance;
@@ -810,6 +811,21 @@ namespace AzureTypedStorage
             {
                 return _instance.Uri;
             }
+        }
+
+        public TableResult Insert(TElement element)
+        {
+            return _instance.Execute(TableOperation.Insert(element));
+        }
+
+        public TableResult InsertOrReplace(TElement element)
+        {
+            return _instance.Execute(TableOperation.InsertOrReplace(element));
+        }
+
+        public TableResult Remove(TElement element)
+        {
+            return _instance.Execute(TableOperation.Delete(element));
         }
     }
 }
